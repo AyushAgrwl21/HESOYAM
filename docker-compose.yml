@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      ELEXON_BASE_URL: ${ELEXON_BASE_URL:-https://data.elexon.co.uk/bmrs/api/v1}
+      STUDY_START: ${STUDY_START:-2026-01-01}
+      STUDY_END: ${STUDY_END:-2026-01-31}
+      FUEL_TYPE: ${FUEL_TYPE:-WIND}
+      DECISION_TIMEZONE: ${DECISION_TIMEZONE:-Europe/London}
+      DECISION_CUTOFF_LOCAL: ${DECISION_CUTOFF_LOCAL:-09:00}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173,http://localhost:8080,http://127.0.0.1:8080}
+      CACHE_PATH: ${CACHE_PATH:-data/wind_procurement.sqlite}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    volumes:
+      - ./backend/data:/app/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-}
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy

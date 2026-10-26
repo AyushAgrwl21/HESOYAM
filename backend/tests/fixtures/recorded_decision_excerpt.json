@@ -1,0 +1,46 @@
+{
+  "fixture_label": "recorded",
+  "retrieved_at_utc": "2026-10-25T21:23:43Z",
+  "warning": "Excerpt copied from the cached Elexon extract. It is not a synthetic series and it is not the full January extract.",
+  "attribution": "Contains BMRS data © Elexon Limited copyright and database right 2026.",
+  "fuelhh_rows": [
+    {
+      "dataset": "FUELHH",
+      "publishTime": "2026-01-01T00:30:00Z",
+      "startTime": "2026-01-01T00:00:00Z",
+      "settlementDate": "2026-01-01",
+      "settlementPeriod": 1,
+      "fuelType": "WIND",
+      "generation": 13756
+    },
+    {
+      "dataset": "FUELHH",
+      "publishTime": "2026-01-01T01:00:00Z",
+      "startTime": "2026-01-01T00:30:00Z",
+      "settlementDate": "2026-01-01",
+      "settlementPeriod": 2,
+      "fuelType": "WIND",
+      "generation": 13873
+    }
+  ],
+  "windfor_rows": [
+    {
+      "dataset": "WINDFOR",
+      "publishTime": "2025-12-31T04:30:00Z",
+      "startTime": "2026-01-01T00:00:00Z",
+      "generation": 19556
+    },
+    {
+      "dataset": "WINDFOR",
+      "publishTime": "2025-12-31T07:30:00Z",
+      "startTime": "2026-01-01T00:00:00Z",
+      "generation": 19412
+    },
+    {
+      "dataset": "WINDFOR",
+      "publishTime": "2025-12-31T09:30:00Z",
+      "startTime": "2026-01-01T00:00:00Z",
+      "generation": 19466
+    }
+  ]
+}

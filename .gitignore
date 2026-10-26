@@ -1,0 +1,32 @@
+.env
+.env.*
+!.env.example
+
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+*.sqlite
+*.sqlite3
+data/
+
+# The January 2026 extract is public BMRS data, not a secret. It is part of the
+# deployment artifact because the free host has no persistent disk.
+!backend/data/
+!backend/data/wind_procurement.sqlite
+
+.DS_Store
+Thumbs.db
+
+.vercel/
+*.log
+
+docs/
